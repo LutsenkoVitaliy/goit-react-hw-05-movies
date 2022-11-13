@@ -1,23 +1,23 @@
-import { Link } from 'react-router-dom'
+import { ListSearchFilms, ItemSearchFilms } from './SearchMovies.styled'
 import PropTypes from 'prop-types'
 
 
 export default function SearchMovies ({films}) {
   return (
     <>
-      <ol>
+      <ListSearchFilms>
         {films.map(film => (
           <li key={film.id}>
-            <Link to={film.id}>{film.original_title}</Link>
+            <ItemSearchFilms to={String(film.id)}>{film.original_title}</ItemSearchFilms>
           </li>
         ))}
-      </ol>
+      </ListSearchFilms>
     </>
   )
 }
 
 SearchMovies.propTypes = {
-
+  films: PropTypes.array.isRequired
 }
 
  
