@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css';
 import Navigation from "./components/Navigation/Navigation";
 import { Cast, HomePage, MovieDetailsPage, MoviesPage, Reviews } from './view';
 
@@ -18,6 +20,8 @@ export default function App (){
     <Route path="*" element={<Navigate to="/"/>}/>  
     </Route>
   </Routes> 
+  
+  <ToastContainer autoClose={3000} />
   </>
   );
 };

@@ -3,20 +3,20 @@ import { useState, useEffect } from 'react'
 import SearchForm from 'components/SearchForm';
 import SearchMovies from 'components/SearchMovies';
 import { fetchMoviesByName } from 'services/theMoviedbAPI';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 
 export function MoviesPage() {
-  const [nameFilm, setNameFilm] = useState('');
   const [listFilm, setListFilm] = useState([]);
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const nameFilm = searchParams.get('nameFilm') ?? ''
 
   let movieId = useParams();
 
   const handleSearchSubmit = nameFilm => {
-    setNameFilm(nameFilm)
-    console.log(nameFilm);
+    setSearchParams(nameFilm !== '' ? { nameFilm } : {})
   }
 
   useEffect(() => {
@@ -27,7 +27,6 @@ export function MoviesPage() {
       try {
         setStatus('pending');
         const Movies = await fetchMoviesByName(nameFilm);
-        console.log(Movies);
         setListFilm(Movies)
         setStatus('resolved')
       } catch (error) {

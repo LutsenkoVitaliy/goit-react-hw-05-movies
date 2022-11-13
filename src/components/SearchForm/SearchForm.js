@@ -1,7 +1,7 @@
 import { useState } from "react"
+import { toast } from 'react-toastify';
 import PropTypes from "prop-types";
 import { Form, Input, Button } from "./SearchForm.styled";
-
 
 
 export default function SearchForm({onSearchSubmit}) {
@@ -15,7 +15,7 @@ export default function SearchForm({onSearchSubmit}) {
     e.preventDefault();
 
     if (!searchFilm.trim()) {
-      alert('Поисковая строка пуста');
+      toast.error('Поисковая строка пуста');
       return;
     }
 
