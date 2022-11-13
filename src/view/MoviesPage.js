@@ -23,10 +23,11 @@ export function MoviesPage() {
     if (!nameFilm) {
       return
     }
-    async function fetchListSearchMovies({nameFilm}) {
+    async function fetchListSearchMovies(nameFilm) {
       try {
         setStatus('pending');
-        const Movies = await fetchMoviesByName();
+        const Movies = await fetchMoviesByName(nameFilm);
+        console.log(Movies);
         setListFilm(Movies)
         setStatus('resolved')
       } catch (error) {
@@ -34,8 +35,8 @@ export function MoviesPage() {
         setError(error)
       }
     }
-    fetchListSearchMovies()
-  }, [])
+    fetchListSearchMovies(nameFilm)
+  }, [nameFilm])
 
 
   if (status === 'idle') {
