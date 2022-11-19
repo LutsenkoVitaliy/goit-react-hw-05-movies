@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 import Navigation from "./components/Navigation/Navigation";
-import { Cast, HomePage, MovieDetailsPage, MoviesPage, Reviews } from './view';
+import { Cast, HomePage, MoviesPage, Reviews, FilmPage } from './view';
 
 export default function App (){
   return (
@@ -13,7 +13,7 @@ export default function App (){
     <Route path="/" element={<Navigation />}>
     <Route index element={<HomePage />} />
     <Route path="movies" element={<MoviesPage/>}/>
-      <Route path="movies/:movieId" element={<MovieDetailsPage/>}>
+      <Route path="movies/:movieId" element={<FilmPage/>}>
         <Route path="cast" element={<Cast/>}/>
         <Route path="reviews" element={<Reviews />} />
       </Route>
