@@ -1,7 +1,6 @@
-import react from "react"
 
 
-export default function MovieDetailsPage({}) {
+export default function MovieDetailsPage() {
   
 
   return (

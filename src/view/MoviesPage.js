@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom';
 
 import SearchForm from 'components/SearchForm';
 import SearchMovies from 'components/SearchMovies';
 import { fetchMoviesByName } from 'services/theMoviedbAPI';
-import { useParams, useSearchParams } from 'react-router-dom';
+
 
 
 export function MoviesPage() {
@@ -13,7 +14,6 @@ export function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const nameFilm = searchParams.get('nameFilm') ?? ''
 
-  let movieId = useParams();
 
   const handleSearchSubmit = nameFilm => {
     setSearchParams(nameFilm !== '' ? { nameFilm } : {})
@@ -69,6 +69,6 @@ export function MoviesPage() {
   }
 }
 
-MoviesPage.propTypes = {}
+
 
 
